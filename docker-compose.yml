@@ -1,0 +1,15 @@
+version: '3'
+services:
+  php:
+    container_name: php7.4-fpm
+    build: ./php
+    volumes:
+      - ./html:/var/www/html
+    networks:
+      - php-xdebug-network
+    environment:
+      PHP_IDE_CONFIG: "serverName=xdebug-docker"
+
+networks:
+  php-xdebug-network:
+    driver: bridge
